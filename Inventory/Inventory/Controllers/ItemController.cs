@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Inventory.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Inventory.Controllers
 {
@@ -12,6 +13,12 @@ namespace Inventory.Controllers
         public IActionResult CreateEditItem(int id)
         {
             return View();
+        }
+        public IActionResult SaveItem(Item item)
+        {
+            //ToDo write Item to DB
+
+            return RedirectToAction("Index");
         }
     }
 }
