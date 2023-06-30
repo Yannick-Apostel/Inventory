@@ -1,9 +1,11 @@
 ﻿using Inventory.Data;
 using Inventory.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Inventory.Controllers
 {
+    [Authorize]
     public class ItemController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
@@ -19,9 +21,15 @@ namespace Inventory.Controllers
 
         public IActionResult CreateEditItem(int id)
         {
+          
+
             if (id != 0)
             {
                 var itemFromDb = _dbContext.Components.SingleOrDefault(x => x.Id == id);
+
+                if (itemFromDb.OwnerUsername != User.Identity.Name)
+                    return Unauthorized();
+               
                 if (itemFromDb != null)
                 {
                     return View(itemFromDb);
