@@ -3,10 +3,20 @@
   
     ViewData["Title"] = "Itemview";
 }
-<a class="btn - btn-info" asp-controller="Item" asp-action="CreateEditItem">Add new Item</a>
+<a class="btn - btn-info " asp-controller="Item" asp-action="CreateEditItem">Add new Item</a>
 
+<div class="row mt-4">
+    <div class="col-10">
+		<input class="form-control " type="text" placeholder="your item" />
+    </div>
+    <div class="col-1">
+       
+    </div>
 
-<table id="itemTable" class="table ">
+</div>
+<button id="inputQuery" onclick="OnclickSearch" class="btn btn-info">search</button>
+
+@*<table id="itemTable" class="table ">
     <thead>
         <tr>
 			<th></th>
@@ -15,60 +25,48 @@
         </tr>
         
     </thead>
-    <tbody>
-        @{
-
-            int counter = 0;
-
-            int i= 0;
-            for(int j=0; j<Model.Count(); j++)
-            {
-                do
-                {
-                    if(i>= Model.Count())
-                    {
-                        break;
-                    }
-                    counter++;
-                    <td>
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h6 class="card-title text-info">ID: @Model[i].Id </h6>
-                                <h5 class="card-title">@Model[i].Name </h5>
-                                <p class="card-text">Count: @Model[i].count</p>
-                                <a class="btn btn-warning" asp-route-id="@Model[i].Id" asp-controller="Item" asp-action="CreateEditItem">Edit</a>
-                                <button onclick="onClickDeleteButton(@Model[i].Id)" class="btn btn-danger">Delete</button>
-
-                            </div>
-                        </div>
-                    </td>
-                    i++;
-                } while (counter < 3);
-                counter = 0;
-                <tr></tr>
-            }        
-        }	
+	<tbody>
+		
     </tbody>
 
-       
+	
              
     
-</table>
+</table>*@
+<div id="partialList"></div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalItem" tabindex="-1"  aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalTitle">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               <div id="modalDescription">
+
+               </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
 
 @section Scripts{
     <script>
-        let table = new DataTable('#itemTable');
+      
 
 
         function onClickDeleteButton(id){
             Swal.fire({
                 title: 'are you sure to delete the item?',
                 icon: 'error',
-                showCloseButton: true,
+                showCloseButton: false,
                 showCancelButton: true,
                 focusConfirm: false,
                 confirmButtonText:
-                    'Yes, I do'
+                    'Yes, I am'
             }).then((result) => {  
                 if (result.isConfirmed) {
                     //Backend call to delete job posting by id
@@ -90,6 +88,30 @@
                     
                 }
             })
+        }
+
+        function showItem(id){
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("GetItem")",
+                data: { id: id },
+                success: function (data) {
+                    debugger;
+
+                    $('#modalTitle').text(data.name)
+                    $('#modalDescription').text(data.description)
+                    $('#modalItem').modal('show')
+                }
+            })
+
+           
+        }
+        function OnclickSearch() {
+            
+            debugger;
+            var query = $('#inputQuery').val();
+            $('#partialList').load("/home/GetItemPartial?query=" + query);
+            let table = new DataTable('#itemTable');
         }
         
     </script>

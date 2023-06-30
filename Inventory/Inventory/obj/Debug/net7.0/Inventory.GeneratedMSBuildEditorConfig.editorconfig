@@ -180,6 +180,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[I:/prog/C-Sharp/ASP.NET/Inventory/Inventory/Inventory/Inventory/Views/Home/_ItemListPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfSXRlbUxpc3RQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [I:/prog/C-Sharp/ASP.NET/Inventory/Inventory/Inventory/Inventory/Views/Item/CreateEditItem.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbVxDcmVhdGVFZGl0SXRlbS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

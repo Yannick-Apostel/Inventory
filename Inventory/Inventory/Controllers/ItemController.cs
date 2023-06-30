@@ -86,6 +86,22 @@ namespace Inventory.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        public IActionResult GetItem(int id)
+        {
+            if (id == 0)
+                return BadRequest();
+
+            var itemFromDb = _dbContext.Components.SingleOrDefault(x =>x.Id == id);
+
+            if(itemFromDb == null)
+                return NotFound();
+
+            return Ok(itemFromDb);
+        }
+
+        
+
         
     }
 }
