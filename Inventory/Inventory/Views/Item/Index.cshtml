@@ -1,4 +1,32 @@
-﻿@{
+﻿@model List<Item>
+@{
     ViewData["Title"] = "Itemview";
 }
-<a class="btn - btn-info" asp-asp-controller="ItemController" asp-action="CreateEditItem">Add new Item</a>
+<a class="btn - btn-info" asp-controller="Item" asp-action="CreateEditItem">Add new Item</a>
+
+<hr />
+<table class="table">
+    <thead class="table-info table-bordered table-striped table-hover">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Count</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach(Item item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.count</td>
+                    <td>
+                        <a class="btn btn-warning" asp-route-id="@item.Id" asp-controller="Item" asp-action="CreateEditItem">Edit</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

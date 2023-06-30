@@ -13,15 +13,29 @@ namespace Inventory.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var itemFromDb = _dbContext.Components.Where(x => x.OwnerUsername == User.Identity.Name).ToList();
+            return View(itemFromDb);
         }
 
         public IActionResult CreateEditItem(int id)
         {
+            if (id != 0)
+            {
+                var itemFromDb = _dbContext.Components.SingleOrDefault(x => x.Id == id);
+                if (itemFromDb != null)
+                {
+                    return View(itemFromDb);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
             return View();
         }
         public IActionResult SaveItem(Item item)
         {
+            item.OwnerUsername = User.Identity.Name;
             
             if(item.Id == 0) //add new Item if not editing
             {
@@ -40,6 +54,7 @@ namespace Inventory.Controllers
                 itemFromDb.Name = item.Name;
                 itemFromDb.count = item.count;
                 itemFromDb.Description = item.Description;
+                itemFromDb.OwnerUsername = item.OwnerUsername;
             }
             
 
