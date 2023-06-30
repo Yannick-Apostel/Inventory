@@ -5,7 +5,7 @@
 <a class="btn - btn-info" asp-controller="Item" asp-action="CreateEditItem">Add new Item</a>
 
 <hr />
-<table class="table">
+<table id="itemTable" class="table">
     <thead class="table-info table-bordered table-striped table-hover">
         <tr>
             <th>ID</th>
@@ -24,10 +24,50 @@
                     <td>@item.count</td>
                     <td>
                         <a class="btn btn-warning" asp-route-id="@item.Id" asp-controller="Item" asp-action="CreateEditItem">Edit</a>
-                        <a class="btn btn-danger" asp-route-id="@item.Id" asp-controller="Item" asp-action="DeleteItem">Delete</a>
+                        <button onclick="onClickDeleteButton(@item.Id)" class="btn btn-danger">Delete</button>
                     </td>
                 </tr>
             }
         }
     </tbody>
 </table>
+
+@section Scripts{
+    <script>
+        let table = new DataTable('#itemTable');
+
+
+        function onClickDeleteButton(id){
+            Swal.fire({
+                title: 'are you sure to delete the item?',
+                icon: 'error',
+                showCloseButton: true,
+                showCancelButton: true,
+                focusConfirm: false,
+                confirmButtonText:
+                    'Yes, I do'
+            }).then((result) => {  
+                if (result.isConfirmed) {
+                    //Backend call to delete job posting by id
+
+                    $.ajax({
+                        type:"POST",
+                        url:"@Url.Action("DeleteItemById")",
+                        data:{id: id},
+                        success: function(msg){
+                            Swal.fire('Item was successfully deleted!', '', 'success').then((result) => {
+                               location.reload()
+                            });
+                        },
+                        error: function(msg){
+                            Swal.fire('something went wrong!', '', 'error')
+                        }
+                    });
+
+                    
+                }
+            })
+        }
+        
+    </script>
+}

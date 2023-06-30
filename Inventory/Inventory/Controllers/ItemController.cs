@@ -62,8 +62,8 @@ namespace Inventory.Controllers
 
             return RedirectToAction("Index");
         }
-
-        public IActionResult DeleteItem(int id) 
+        [HttpPost]
+        public IActionResult DeleteItemById(int id) 
         {
             if (id == 0)
                 return BadRequest();
@@ -75,7 +75,9 @@ namespace Inventory.Controllers
 
             _dbContext.Components.Remove(itemFromDB);
             _dbContext.SaveChanges();
-            return RedirectToAction("Index");
+            return Ok();
         }
+
+        
     }
 }
