@@ -8,5 +8,6 @@
 		public string Description { get; set; }
 
 		public string OwnerUsername { get; set; }
+		public string Companyname { get; set; }
 	}
 }

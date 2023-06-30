@@ -8,6 +8,7 @@ namespace Inventory.Data
     public class ApplicationDbContext : IdentityDbContext
     {
         public DbSet<Item> Components { get; set; }
+        public DbSet<Company> Companys { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
