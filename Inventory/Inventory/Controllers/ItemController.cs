@@ -56,8 +56,25 @@ namespace Inventory.Controllers
                 itemFromDb.Description = item.Description;
                 itemFromDb.OwnerUsername = item.OwnerUsername;
             }
+
+            _dbContext.SaveChanges();
             
 
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult DeleteItem(int id) 
+        {
+            if (id == 0)
+                return BadRequest();
+
+            var itemFromDB = _dbContext.Components.SingleOrDefault(x =>x.Id == id);
+
+            if(itemFromDB == null)
+             return NotFound(); 
+
+            _dbContext.Components.Remove(itemFromDB);
+            _dbContext.SaveChanges();
             return RedirectToAction("Index");
         }
     }
