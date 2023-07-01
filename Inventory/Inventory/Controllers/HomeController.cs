@@ -1,6 +1,7 @@
 ﻿using Inventory.Data;
 using Inventory.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -18,6 +19,16 @@ namespace Inventory.Controllers
 
             _logger = logger;
             _dbContext = dbContext;
+			var builder = WebApplication.CreateBuilder();
+			var serviceProvider = builder.Services.BuildServiceProvider();
+            createRole(serviceProvider, GetUserName());
+
+		}
+        public List<IdentityUser> GetUserName()
+        {
+            List<IdentityUser> users = new List<IdentityUser>();
+            users = _dbContext.Users.ToList();
+            return users;
         }
 
         public IActionResult Index()
@@ -52,5 +63,24 @@ namespace Inventory.Controllers
                 
             return PartialView("_ItemListPartial", items);
         }
-    }
+
+		public async Task createRole(IServiceProvider serviceProvider, List<IdentityUser> users)
+		{
+
+
+			//foreach (IdentityUser user in users)
+			//{
+
+			//	var roleManager = serviceProvider.GetService<RoleManager<IdentityRole>>();
+
+			//	var roleExits = await roleManager.RoleExistsAsync(user.UserName);
+
+			//	if (roleExits)
+			//		return;
+
+			//	await roleManager.CreateAsync(new IdentityRole(user.UserName));
+			//}
+
+		}
+	}
 }
