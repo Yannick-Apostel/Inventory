@@ -1,41 +1,60 @@
 ﻿@model List<Item>
-<div class="list-group mt-4">
-    @{
+
+<table id="itemTable" class="table ">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+
+    </thead>
+    <tbody>
+		<div class="list-group mt-4">
+			@{
+				if(Model == null || Model.Count() == 0)
+				{
+					<h3>No Items found!</h3>
+				}
+				else
+				{
+					int counter = 0;
+					int i = 0;
+
+					for (int j = 0; j < Model.Count(); j++)
+					{
+						do
+						{
+							if (i >= Model.Count())
+							{
+								break;
+							}
+							counter++;
+							<td>
+								<div class="card" style="width: 18rem;">
+									<div class="card-body">
+										<a onclick="showItem(@Model[i].Id)" style="cursor:pointer;">
+											<h6 class="card-title text-info">ID: @Model[i].Id </h6>
+											<h5 class="card-title">@Model[i].Name </h5>
+											<p class="card-text">Count: @Model[i].count</p>
+											<a class="btn btn-warning" asp-route-id="@Model[i].Id" asp-controller="Item" asp-action="CreateEditItem">Edit</a>
+											<button onclick="onClickDeleteButton(@Model[i].Id)" class="btn btn-danger">Delete</button>
+										</a>
+									</div>
+								</div>
+							</td>
+							i++;
+						} while (counter < 3);
+						counter = 0;
+						<tr></tr>
+					}
+				}
+			}
+		</div>
+	</tbody>
+</table>
+				
 
 
 
-
-        int counter = 0;
-
-        int i = 0;
-        for (int j = 0; j < Model.Count(); j++)
-        {
-            do
-            {
-                if (i >= Model.Count())
-                {
-                    break;
-                }
-                counter++;
-                <td>
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <a onclick="showItem(@Model[i].Id)" style="cursor:pointer;">
-                                <h6 class="card-title text-info">ID: @Model[i].Id </h6>
-                                <h5 class="card-title">@Model[i].Name </h5>
-                                <p class="card-text">Count: @Model[i].count</p>
-                                <a class="btn btn-warning" asp-route-id="@Model[i].Id" asp-controller="Item" asp-action="CreateEditItem">Edit</a>
-                                <button onclick="onClickDeleteButton(@Model[i].Id)" class="btn btn-danger">Delete</button>
-                            </a>
-
-
-                        </div>
-                    </div>
-                </td>
-                i++;
-            } while (counter < 3);
-            counter = 0;
-            <tr></tr>
-        }
-    }
-</div>
+				

@@ -45,6 +45,9 @@ namespace Inventory.Controllers
                 items = _dbContext.Components
                     .Where(x => x.Name.ToLower().Contains(query.ToLower()))
                     .ToList();
+
+           
+                
             return PartialView("_ItemListPartial", items);
         }
     }

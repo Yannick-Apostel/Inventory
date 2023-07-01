@@ -7,32 +7,13 @@
 
 <div class="row mt-4">
     <div class="col-10">
-		<input class="form-control " type="text" placeholder="your item" />
+		<input id="inputQuery" class="form-control " type="text" placeholder="your item" />
     </div>
     <div class="col-1">
-       
+        <button onclick="onclickSearch()" class="btn btn-info">search</button>
     </div>
 
 </div>
-<button id="inputQuery" onclick="OnclickSearch" class="btn btn-info">search</button>
-
-@*<table id="itemTable" class="table ">
-    <thead>
-        <tr>
-			<th></th>
-			<th></th>
-			<th></th>
-        </tr>
-        
-    </thead>
-	<tbody>
-		
-    </tbody>
-
-	
-             
-    
-</table>*@
 <div id="partialList"></div>
 
 <!-- Modal -->
@@ -96,7 +77,7 @@
                 url: "@Url.Action("GetItem")",
                 data: { id: id },
                 success: function (data) {
-                    debugger;
+                  
 
                     $('#modalTitle').text(data.name)
                     $('#modalDescription').text(data.description)
@@ -106,12 +87,15 @@
 
            
         }
-        function OnclickSearch() {
+        
+        $('#partialList').load("/home/GetItemPartial/");
+        function onclickSearch() {
             
-            debugger;
+            
             var query = $('#inputQuery').val();
             $('#partialList').load("/home/GetItemPartial?query=" + query);
-            let table = new DataTable('#itemTable');
+
+            //let table = new DataTable('#itemTable');
         }
         
     </script>
