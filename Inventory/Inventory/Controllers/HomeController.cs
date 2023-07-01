@@ -22,7 +22,9 @@ namespace Inventory.Controllers
 
         public IActionResult Index()
         {
-            return View();
+			var itemFromDb = _dbContext.Components.Where(x => x.OwnerUsername == User.Identity.Name).ToList();
+			return View(itemFromDb);
+			
         }
 
         public IActionResult Privacy()
@@ -40,10 +42,10 @@ namespace Inventory.Controllers
             List<Item> items = new List<Item>();
 
             if (string.IsNullOrWhiteSpace(query))
-                items = _dbContext.Components.ToList();
-            else
+                items = _dbContext.Components.Where(x => x.OwnerUsername == User.Identity.Name).ToList();
+			else
                 items = _dbContext.Components
-                    .Where(x => x.Name.ToLower().Contains(query.ToLower()))
+                    .Where(x => x.Name.ToLower().Contains(query.ToLower()) &&  x.OwnerUsername == User.Identity.Name)
                     .ToList();
 
            

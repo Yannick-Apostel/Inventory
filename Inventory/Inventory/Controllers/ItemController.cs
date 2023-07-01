@@ -2,6 +2,7 @@
 using Inventory.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Inventory.Controllers
 {
@@ -17,7 +18,9 @@ namespace Inventory.Controllers
         {
             var itemFromDb = _dbContext.Components.Where(x => x.OwnerUsername == User.Identity.Name).ToList();
             return View(itemFromDb);
-        }
+			
+
+		}
 
         public IActionResult CreateEditItem(int id)
         {
@@ -99,9 +102,9 @@ namespace Inventory.Controllers
 
             return Ok(itemFromDb);
         }
+		
 
-        
 
-        
-    }
+
+	}
 }
