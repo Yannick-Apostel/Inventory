@@ -1,7 +1,7 @@
 
 # Inventory - an Web-API to manage your warehouse
 
-With Inventory it is possible to manage your warehouse.  Thanks to the convenient view of your warehouse you won't lose the overview. Useful functions such as the search functions help you immediately find out all the information about your searched object.   
+The "Inventory" project is an application for managing inventory lists. It was developed to allow users to add, edit and delete items, as well as check the current inventory. The project was developed in C#.NET 7.0 and uses the Entity framework for the backend and HTML, CSS and JavaScript for the frontend.
 
 ## How to Install and Run Inventory
 
