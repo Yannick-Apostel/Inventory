@@ -1,0 +1,36 @@
+﻿@model Inventory.Models.AccountManager
+@{
+    ViewData["Title"] = "Create an Account";
+}
+
+<form asp-asp-controller="Item" asp-action="SaveItem">
+    <div class="card">
+        <div class="card-header">
+            <h5>Create User</h5>
+        </div>
+        <div class="card-body">
+            <input hidden asp-for="Id" />
+            <div class="row form-control-lg">
+                <div class="col">
+                    <input class="form-control" asp-for="Name" type="text" placeholder="Name" />
+                </div>
+                <div class="col">
+                    <input class="form-control" asp-for="Sirname" type="number" placeholder="Sirname" />
+                </div>
+            </div>
+            <div class="row form-control-lg">
+                <div class="col">
+                    <input class="form-control" asp-for="Username" type="text" placeholder="Username" />
+                </div>
+                <div class="col">
+                    <input class="form-control" asp-for="CreatingUser" type="text" placeholder="CreatingUser" />
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-info"> Save</button>
+        </div>
+
+    </div>
+
+</form>

@@ -1,10 +1,18 @@
-﻿@using Microsoft.AspNetCore.Identity;
-@inject UserManager<IdentityUser> UserManager
-@{
+﻿@{
+	ViewData["Title"] = "Home Page";
 
-    ViewData["Title"] = "Home Page";
 
-  
 }
 
-<h6>Welcome @User.Identity?.Name</h6>
+
+<h3>Welcome @User.Identity?.Name!</h3>
+<hr />
+<div>
+	<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+		<a type="button" class="btn btn-outline-info" asp-controller="AccountManager" asp-action="CreateUser">Create a new User</a>
+		<a type="button" class="btn btn-outline-info" asp-controller="AccountManager" asp-action="ShowUser">Show all User</a>
+		<a type="button" class="btn btn-outline-secondary " asp-controller="AccountManager" asp-action="Settings">settings</a>
+	</div>
+</div>
+
+
