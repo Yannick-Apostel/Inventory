@@ -15,23 +15,23 @@ The "Inventory" project is an application for managing inventory lists. It was d
 ## Create an item in the database
  - click on Your Item...
    
-![Step1](https://github.com/Yannick-Apostel/Inventory/blob/main/ressources/step1.png)
+![Step1](https://github.com/Yannick-Apostel/Inventory/blob/main/resources/step1.png)
 
   ...then you will get a list with your inventory and the possibility to add a new item.
   
-![Step2](https://github.com/Yannick-Apostel/Inventory/blob/main/ressources/step2.png)
+![Step2](https://github.com/Yannick-Apostel/Inventory/blob/main/resources/step2.png)
 
  - fill in the fields 'name', 'count' and 'description' and click on save.
  
-![Step3](https://github.com/Yannick-Apostel/Inventory/blob/main/ressources/step3.png)
+![Step3](https://github.com/Yannick-Apostel/Inventory/blob/main/resources/step3.png)
 
 - After that you have the possibility to adjust or delete individual items.
 
-![Step4](https://github.com/Yannick-Apostel/Inventory/blob/main/ressources/step4.png)
+![Step4](https://github.com/Yannick-Apostel/Inventory/blob/main/resources/step4.png)
 
 - Click on an item for more information
 
-![Step5](https://github.com/Yannick-Apostel/Inventory/blob/main/ressources/step5.png)
+![Step5](https://github.com/Yannick-Apostel/Inventory/blob/main/resources/step5.png)
 
 ## more information
 
