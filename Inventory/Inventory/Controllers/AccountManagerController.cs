@@ -43,7 +43,7 @@ namespace Inventory.Controllers
 			if (account.Id == 0 && CheckExitsAccount(account) == false) //add new Item if not editing
 			{
 				_dbContext.Accounts.Add(account);
-
+				account.CreatingUser = User.Identity.Name;
 			}
 			else
 			{
@@ -51,14 +51,13 @@ namespace Inventory.Controllers
 				var accountFromDB = _dbContext.Accounts.SingleOrDefault(x => x.Username == account.Username);
 
 				if (accountFromDB == null)
-				{
-					return NotFound();
-				}
+				return NotFound();
+				
 
 				accountFromDB.Name = account.Name;
 				accountFromDB.Sirname = account.Sirname;
 				accountFromDB.Username = account.Username;
-				account.CreatingUser = User.Identity.Name;
+				
 				
 			}
 
@@ -71,11 +70,28 @@ namespace Inventory.Controllers
 			foreach (AccountManager accountInDB in _dbContext.Accounts) 
 			{
 				if (accountInDB.Username == account.Username)
-				{
 					return true;
-				}
+				
 			}
 			return false;
 		}
+
+		[HttpPost]
+		public IActionResult DeleteAccountById(int id) 
+		{
+			if (id == 0)
+				return BadRequest();
+
+			var accountFromDb = _dbContext.Accounts.SingleOrDefault(x => x.Id == id);
+
+			if (accountFromDb == null)
+				return NotFound();
+
+			_dbContext.Accounts.Remove(accountFromDb);
+			_dbContext.SaveChanges();
+
+			return Ok();
+			
+		} 
 	}
 }

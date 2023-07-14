@@ -39,38 +39,38 @@
 
 		let table = new DataTable('#UserTable');
 
-		//function onClickDelteButton(id){
-		//	Swal.fire({
-		//		title: 'Möchtest du das Inserat wirklich löschen?',
-		//		icon: 'error',
-		//		showCloseButton: true,
-		//		showCancelButton: true,
-		//		focusConfirm: false,
-		//		confirmButtonText:
-		//			'Ja, löschen!',
-		//	}).then((result) => {
-		//		if (result.isConfirmed) {
+		function onClickDelteButton(id)
+		{
+			Swal.fire({
+				title: 'are you sure to delete the item?',
+				icon: 'error',
+				showCloseButton: false,
+				showCancelButton: true,
+				focusConfirm: false,
+				confirmButtonText:
+					'Yes, I am'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					//Backend call to delete job posting by id
 
-		//			//Backend call to delete job posting by id
-		//			$.ajax({
-		//				type: "POST",
-		//				url: "@Url.Action("DeleteJobPostingById")",
-		//				data: {id: id},
-		//				succes: function(msg){
-		//					Swal.fire('Wurde gelöscht!', '', 'success').then((result) => {
-		//						location.reload();
-		//					});
-		//				},
-		//				error: function(msg){
-		//					Swal.fire('Ups, etwas ist schief gelaufen!', '', 'error')
-		//				}
+					$.ajax({
+						type: "POST",
+						url: "@Url.Action("DeleteAccountById")",
+						data: { id: id },
+						success: function (msg) {
+							Swal.fire('Item was successfully deleted!', '', 'success').then((result) => {
+								location.reload()
+							});
+						},
+						error: function (msg) {
+							Swal.fire('something went wrong!', '', 'error')
+						}
+					});
 
-		//			});
 
-					
-		//		}	
-		//	})
-		//}
+				}
+			})
+		}
 
 		
 	</script>
