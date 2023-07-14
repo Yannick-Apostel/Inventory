@@ -11781,23 +11781,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\apost\\.nuget\\packages\\": {},
+    "C:\\Users\\Yannick Apostel\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "I:\\prog\\C-Sharp\\ASP.NET\\Inventory\\Inventory\\Inventory\\Inventory\\Inventory.csproj",
+      "projectUniqueName": "C:\\Users\\Yannick Apostel\\Desktop\\prog\\C#\\ASP.NET\\Inventory\\Inventory\\Inventory\\Inventory.csproj",
       "projectName": "Inventory",
-      "projectPath": "I:\\prog\\C-Sharp\\ASP.NET\\Inventory\\Inventory\\Inventory\\Inventory\\Inventory.csproj",
-      "packagesPath": "C:\\Users\\apost\\.nuget\\packages\\",
-      "outputPath": "I:\\prog\\C-Sharp\\ASP.NET\\Inventory\\Inventory\\Inventory\\Inventory\\obj\\",
+      "projectPath": "C:\\Users\\Yannick Apostel\\Desktop\\prog\\C#\\ASP.NET\\Inventory\\Inventory\\Inventory\\Inventory.csproj",
+      "packagesPath": "C:\\Users\\Yannick Apostel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Yannick Apostel\\Desktop\\prog\\C#\\ASP.NET\\Inventory\\Inventory\\Inventory\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\apost\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Yannick Apostel\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -11806,7 +11806,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -11869,7 +11870,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }
