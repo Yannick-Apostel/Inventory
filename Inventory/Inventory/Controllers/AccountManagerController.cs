@@ -27,7 +27,8 @@ namespace Inventory.Controllers
 
 		public IActionResult ShowUser()
 		{
-			return View();
+		var allUsersInDB = _dbContext.Accounts.ToList();
+			return View(allUsersInDB);
 		}
 
 		public IActionResult Settings()
@@ -38,15 +39,16 @@ namespace Inventory.Controllers
 		public IActionResult SaveAccount(AccountManager account)
 		{
 
-			account.CreatingUser = User.Identity.Name;
-			if (account.Id == 0) //add new Item if not editing
+			
+			if (account.Id == 0 && CheckExitsAccount(account) == false) //add new Item if not editing
 			{
 				_dbContext.Accounts.Add(account);
-				_dbContext.SaveChanges();
+
 			}
 			else
 			{
-				var accountFromDB = _dbContext.Accounts.SingleOrDefault(x => x.Id == account.Id);
+
+				var accountFromDB = _dbContext.Accounts.SingleOrDefault(x => x.Username == account.Username);
 
 				if (accountFromDB == null)
 				{
@@ -56,11 +58,24 @@ namespace Inventory.Controllers
 				accountFromDB.Name = account.Name;
 				accountFromDB.Sirname = account.Sirname;
 				accountFromDB.Username = account.Username;
+				account.CreatingUser = User.Identity.Name;
 				
 			}
 
 			_dbContext.SaveChanges();
 			return RedirectToAction("ShowUser");
+		}
+
+		public bool CheckExitsAccount(AccountManager account) 
+		{
+			foreach (AccountManager accountInDB in _dbContext.Accounts) 
+			{
+				if (accountInDB.Username == account.Username)
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 	}
 }

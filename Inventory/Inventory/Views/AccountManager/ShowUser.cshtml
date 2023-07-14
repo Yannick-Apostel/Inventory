@@ -1,4 +1,77 @@
-﻿@model Inventory.Models.AccountManager
-
+﻿@model List<AccountManager>
+@{
+	ViewData["Title"] = "all users";
+}
 <h6> All User</h6>
 <hr />
+<table id="UserTable" class="table table-bordered table-striped table-hover">
+	<thead class="table-dark">
+		<tr>
+			<th>Name</th>
+			<th>Sirname</th>
+			<th>Username</th>
+			<th>Created User</th>
+			<th>actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		@{
+			foreach(AccountManager account in Model)
+			{
+				<tr>
+					<td>@account.Name</td>
+					<td>@account.Sirname</td>
+					<td>@account.Username</td>
+					<td>@account.CreatingUser</td>
+					<td>
+						<a asp-route-account="@account" asp-controller="AccountManager" asp-action="SaveAccount" class="btn btn-warning">Bearbeiten</a>
+						
+						<button onclick="onClickDelteButton(@account.Id)" class="btn btn-danger">Löschen</button>
+					</td>
+				</tr>
+			}
+		}
+	</tbody>
+</table>
+
+@section Scripts{
+	<script>
+
+		let table = new DataTable('#UserTable');
+
+		//function onClickDelteButton(id){
+		//	Swal.fire({
+		//		title: 'Möchtest du das Inserat wirklich löschen?',
+		//		icon: 'error',
+		//		showCloseButton: true,
+		//		showCancelButton: true,
+		//		focusConfirm: false,
+		//		confirmButtonText:
+		//			'Ja, löschen!',
+		//	}).then((result) => {
+		//		if (result.isConfirmed) {
+
+		//			//Backend call to delete job posting by id
+		//			$.ajax({
+		//				type: "POST",
+		//				url: "@Url.Action("DeleteJobPostingById")",
+		//				data: {id: id},
+		//				succes: function(msg){
+		//					Swal.fire('Wurde gelöscht!', '', 'success').then((result) => {
+		//						location.reload();
+		//					});
+		//				},
+		//				error: function(msg){
+		//					Swal.fire('Ups, etwas ist schief gelaufen!', '', 'error')
+		//				}
+
+		//			});
+
+					
+		//		}	
+		//	})
+		//}
+
+		
+	</script>
+	}
