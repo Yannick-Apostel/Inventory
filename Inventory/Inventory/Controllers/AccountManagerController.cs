@@ -37,8 +37,7 @@ namespace Inventory.Controllers
 			{
 				var accountFromDb = _dbContext.Accounts.SingleOrDefault(x => x.Id == id);
 
-				if ( User.Identity.Name != "Admin")
-					return Unauthorized();
+				
 
 				if (accountFromDb != null)
 				{
@@ -46,7 +45,7 @@ namespace Inventory.Controllers
 				}
 				else
 				{
-					return NotFound();
+					return RedirectToAction("CreateEditUser");
 				}
 			}
 			return View();

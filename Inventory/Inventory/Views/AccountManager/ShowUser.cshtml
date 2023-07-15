@@ -42,7 +42,7 @@
 		function onClickDelteButton(id)
 		{
 			Swal.fire({
-				title: 'are you sure to delete the item?',
+				title: 'are you sure to delete the account?',
 				icon: 'error',
 				showCloseButton: false,
 				showCancelButton: true,
@@ -58,7 +58,7 @@
 						url: "@Url.Action("DeleteAccountById")",
 						data: { id: id },
 						success: function (msg) {
-							Swal.fire('Item was successfully deleted!', '', 'success').then((result) => {
+							Swal.fire('account was successfully deleted!', '', 'success').then((result) => {
 								location.reload()
 							});
 						},
