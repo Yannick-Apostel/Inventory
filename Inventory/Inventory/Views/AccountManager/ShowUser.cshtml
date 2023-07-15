@@ -5,7 +5,7 @@
 <h6> All User</h6>
 <hr />
 <table id="UserTable" class="table table-bordered table-striped table-hover">
-	<thead class="table-dark">
+	<thead class="table-info">
 		<tr>
 			<th>Name</th>
 			<th>Sirname</th>
@@ -24,7 +24,7 @@
 					<td>@account.Username</td>
 					<td>@account.CreatingUser</td>
 					<td>
-						<a asp-route-account="@account" asp-controller="AccountManager" asp-action="SaveAccount" class="btn btn-warning">Bearbeiten</a>
+						<a class="btn btn-warning" asp-route-id="@account.Id" asp-controller="AccountManager" asp-action="CreateEditUser">Edit</a>
 						
 						<button onclick="onClickDelteButton(@account.Id)" class="btn btn-danger">Löschen</button>
 					</td>

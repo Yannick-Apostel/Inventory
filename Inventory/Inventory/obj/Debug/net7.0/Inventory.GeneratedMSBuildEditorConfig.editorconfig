@@ -172,8 +172,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/prog/C-Sharp/ASP.NET/Inventory/Inventory/Inventory/Inventory/Views/AccountManager/CreateUser.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudE1hbmFnZXJcQ3JlYXRlVXNlci5jc2h0bWw=
+[I:/prog/C-Sharp/ASP.NET/Inventory/Inventory/Inventory/Inventory/Views/AccountManager/CreateEditUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudE1hbmFnZXJcQ3JlYXRlRWRpdFVzZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [I:/prog/C-Sharp/ASP.NET/Inventory/Inventory/Inventory/Inventory/Views/AccountManager/Settings.cshtml]

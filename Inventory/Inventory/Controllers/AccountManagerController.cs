@@ -20,11 +20,6 @@ namespace Inventory.Controllers
 			return View();
 		}
 
-		public IActionResult CreateUser()
-		{
-			return View();
-		}
-
 		public IActionResult ShowUser()
 		{
 		var allUsersInDB = _dbContext.Accounts.ToList();
@@ -33,6 +28,27 @@ namespace Inventory.Controllers
 
 		public IActionResult Settings()
 		{
+			return View();
+		}
+
+		public IActionResult CreateEditUser(int id)
+		{
+			if (id != 0)
+			{
+				var accountFromDb = _dbContext.Accounts.SingleOrDefault(x => x.Id == id);
+
+				if ( User.Identity.Name != "Admin")
+					return Unauthorized();
+
+				if (accountFromDb != null)
+				{
+					return View(accountFromDb);
+				}
+				else
+				{
+					return NotFound();
+				}
+			}
 			return View();
 		}
 
